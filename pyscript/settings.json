@@ -1,0 +1,7 @@
+{
+  "presets":{
+    "home":"./presets",
+    "default":"ComputerCraft.js",
+    "entry":"main"
+  }
+}
