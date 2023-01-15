@@ -1,7 +1,19 @@
 {
+  "lang":{
+    "home":"./lang",
+    "default":"zh.json"
+  },
   "presets":{
     "home":"./presets",
     "default":"ComputerCraft.js",
     "entry":"main"
+  },
+  "GUI":{
+    "main":{
+      "width":480,
+      "height":360,
+      "xoffset":150,
+      "yoffset":150
+    }
   }
 }

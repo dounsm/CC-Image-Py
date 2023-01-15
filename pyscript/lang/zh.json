@@ -1,0 +1,19 @@
+{
+  "GUI":{
+    "window":{
+      
+    },
+    "main":{
+      "title":"颜色转换器"
+    },
+    "home":{
+      "title":"主页"
+    },
+    "info":{
+      "title":"信息"
+    },
+    "uplog":{
+      "title":"更新日志"
+    }
+  }
+}

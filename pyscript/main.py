@@ -3,5 +3,5 @@ from core.settings import Settings
 from core.GUI import App
 installRuntime() #安装运行库
 
-config = Settings()
+config = Settings("./settings.json")
 App(config).mainloop()

@@ -1,0 +1,19 @@
+{
+  "GUI":{
+    "window":{
+      
+    },
+    "main":{
+      "title":"Colors Transformer"
+    },
+    "home":{
+      "title":"Homepage"
+    },
+    "info":{
+      "title":"Information"
+    },
+    "uplog":{
+      "title":"Update log"
+    }
+  }
+}
