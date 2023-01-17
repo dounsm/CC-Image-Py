@@ -9,6 +9,12 @@
     "entry":"main"
   },
   "GUI":{
+    "window":{
+      "scrolledText":{
+        "width":40,
+        "height":40
+      }
+    },
     "main":{
       "width":480,
       "height":360,

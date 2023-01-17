@@ -10,7 +10,13 @@
       "title":"Homepage"
     },
     "info":{
-      "title":"Information"
+      "title":"Information",
+      "shower":{
+        "author":"Author Information",
+        "version":"Version Information",
+        "vver":"Version: ",
+        "vdat":"Update date: "
+      }
     },
     "uplog":{
       "title":"Update log"
