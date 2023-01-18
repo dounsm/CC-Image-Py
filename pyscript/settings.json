@@ -20,6 +20,10 @@
       "height":360,
       "xoffset":150,
       "yoffset":150
+    },
+    "info":{
+      "disabled#photoScaleRate":0.25,
+      "labelPhotoSize":[200,100]
     }
   }
 }

@@ -13,7 +13,19 @@
       "btnFrame":"操作",
       "btns":{
         "run":"开始转换",
-        "exit":"退出软件"
+        "exit":"退出软件",
+        "refresh":"刷新图片"
+      },
+      "defaultFn":"请选择...",
+      "choose":"选择",
+      "filedialog":{
+        "title":"选择一个图片文件",
+        
+        "photof":"支持的图片文件",
+        "allf":"所有文件"
+      },
+      "fin":{
+        "title":"文件输入"
       }
     },
     "info":{

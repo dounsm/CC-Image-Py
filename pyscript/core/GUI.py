@@ -2,6 +2,9 @@ import tkinter as tk
 import tkinter.ttk as ttk
 import tkinter.tix as tix
 import tkinter.scrolledtext as stext
+import tkinter.filedialog as filedialog
+from PIL import Image,ImageTk
+import math
 
 import os.path as path
 from core.settings import Settings
@@ -49,9 +52,38 @@ class App():
     self.phome.btnf = ttk.LabelFrame(self.phome,text=self.lang.gc("home.btnFrame"))
     self.phome.btnf.grid(row=2,column=1,sticky="nsew")
     tk.Button(self.phome.btnf,text=self.lang.gc("home.btns.run")).pack(fill=tk.X)
+    tk.Button(self.phome.btnf,text=self.lang.gc("home.btns.refresh"),command=lambda:self.btn_refresh()).pack(fill=tk.X)
     tk.Button(self.phome.btnf,text=self.lang.gc("home.btns.exit"),command=lambda:self.root.destroy()).pack(fill=tk.X)
     
     # ------------ 文件输入区 ----------------------------
+    self.phome.finf = tk.LabelFrame(self.phome,text=self.lang.gc("home.fin.title"))
+    self.phome.finf.grid(row=1,column=2,sticky="nesw")
+    self.inputfn = tk.StringVar(value=self.lang.gc("home.defaultFn"))
+    self.phome.finf.sf = tk.Frame(self.phome.finf)
+    self.phome.finf.sf.pack(fill=tk.X)
+    self.finput = tk.Entry(self.phome.finf.sf,width=30,textvariable=self.inputfn)
+    self.finput.pack(side=tk.LEFT,fill=tk.Y)
+    tk.Button(self.phome.finf.sf,text=self.lang.gc("home.choose"),command=lambda:self.btn_refresh(lambda:self.inputfn.set(filedialog.askopenfilename(
+      title=self.lang.gc("home.filedialog.title"),initialdir="C:\\",
+      filetypes=[(self.lang.gc("home.filedialog.photof"),".jpg .png .jpeg"),(self.lang.gc("home.filedialog.allf"),"*")]
+    )))).pack(side=tk.LEFT,fill=tk.Y)
+    self.finput.sh = tk.Label(self.phome.finf)
+    self.finput.sh.pack(fill=tk.X)
+    
+    # ------------ 文件输出区 ----------------------------
+    self.outputfn = tk.StringVar(value=self.lang.gc("home.defaultFn"))
+  def btn_refresh(self,callpre=lambda:1):
+    callpre()
+    self.finput.img = Image.open(self.inputfn.get()).convert("RGB")
+    # self.finput.toshow_img = self.finput.img.resize([
+    #   math.ceil(self.finput.img.height * self.config.gc("GUI.info.photoScaleRate")),
+    #   math.ceil(self.finput.img.width  * self.config.gc("GUI.info.photoScaleRate"))
+    # ])
+    self.finput.toshow_img = self.finput.img.resize(
+      self.config.gc("GUI.info.labelPhotoSize")
+    )
+    self.finput.sh.mimg = ImageTk.PhotoImage(self.finput.toshow_img)
+    self.finput.sh.config(image=self.finput.sh.mimg)    
     
   def info(self):
     #信息页面
