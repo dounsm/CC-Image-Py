@@ -71,7 +71,10 @@ class App():
     self.finput.sh.pack(fill=tk.X)
     
     # ------------ 文件输出区 ----------------------------
-    self.outputfn = tk.StringVar(value=self.lang.gc("home.defaultFn"))
+    self.outputfn = tk.StringVar(value=self.lang.gc("home.defaultFn"))#其实是一个文件夹
+    self.phome.finf = tk.LabelFrame(self.phome,text=self.lang.gc("home.fin.title"))
+    self.phome.finf.grid(row=1,column=2,sticky="nesw")
+    
   def btn_refresh(self,callpre=lambda:1):
     callpre()
     self.finput.img = Image.open(self.inputfn.get()).convert("RGB")
@@ -83,7 +86,8 @@ class App():
       self.config.gc("GUI.info.labelPhotoSize")
     )
     self.finput.sh.mimg = ImageTk.PhotoImage(self.finput.toshow_img)
-    self.finput.sh.config(image=self.finput.sh.mimg)    
+    self.finput.sh.config(image=self.finput.sh.mimg)
+    
     
   def info(self):
     #信息页面

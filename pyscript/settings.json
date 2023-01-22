@@ -6,7 +6,7 @@
   "presets":{
     "home":"./presets",
     "default":"ComputerCraft.js",
-    "entry":"main"
+    "entry":"main()"
   },
   "GUI":{
     "window":{
