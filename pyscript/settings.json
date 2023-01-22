@@ -25,5 +25,8 @@
       "disabled#photoScaleRate":0.25,
       "labelPhotoSize":[200,100]
     }
+  },
+  "process":{
+    "mode":2
   }
 }

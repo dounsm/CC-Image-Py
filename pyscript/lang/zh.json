@@ -26,6 +26,10 @@
       },
       "fin":{
         "title":"文件输入"
+      },
+      "fout":{
+        "title":"文件输出",
+        "size":"屏幕大小 getSize()"
       }
     },
     "info":{

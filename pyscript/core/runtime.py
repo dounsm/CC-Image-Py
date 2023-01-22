@@ -3,6 +3,7 @@ import os
 RUMTIME = {
   "js2py":"js2py",
   "pillow":"PIL",
+  "numpy":"numpy"
 }
 
 def installRuntime():

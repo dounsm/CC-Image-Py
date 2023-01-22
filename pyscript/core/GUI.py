@@ -10,6 +10,8 @@ import os.path as path
 from core.settings import Settings
 from core.version import *
 from core.win.InfoShower import InfoShower
+from core.processImg import processImg
+from core.presets import Preset
 
 class App():
   def __init__(self,config,root=tix.Tk()):
@@ -51,7 +53,7 @@ class App():
     # ------------ 按钮控制区 ----------------------------
     self.phome.btnf = ttk.LabelFrame(self.phome,text=self.lang.gc("home.btnFrame"))
     self.phome.btnf.grid(row=2,column=1,sticky="nsew")
-    tk.Button(self.phome.btnf,text=self.lang.gc("home.btns.run")).pack(fill=tk.X)
+    tk.Button(self.phome.btnf,text=self.lang.gc("home.btns.run"),command=lambda:self.process()).pack(fill=tk.X)
     tk.Button(self.phome.btnf,text=self.lang.gc("home.btns.refresh"),command=lambda:self.btn_refresh()).pack(fill=tk.X)
     tk.Button(self.phome.btnf,text=self.lang.gc("home.btns.exit"),command=lambda:self.root.destroy()).pack(fill=tk.X)
     
@@ -70,11 +72,44 @@ class App():
     self.finput.sh = tk.Label(self.phome.finf)
     self.finput.sh.pack(fill=tk.X)
     
+    # ------------ 转换设置区 ----------------------------
+    self.psize = {
+      "x":tk.IntVar(value=50),
+      "y":tk.IntVar(value=50)
+    }
+    
     # ------------ 文件输出区 ----------------------------
     self.outputfn = tk.StringVar(value=self.lang.gc("home.defaultFn"))#其实是一个文件夹
-    self.phome.finf = tk.LabelFrame(self.phome,text=self.lang.gc("home.fin.title"))
-    self.phome.finf.grid(row=1,column=2,sticky="nesw")
-    
+    self.phome.foutf = tk.LabelFrame(self.phome,text=self.lang.gc("home.fout.title"))
+    self.phome.foutf.grid(row=2,column=2,sticky="nesw")
+    self.phome.foutf.sf = tk.Frame(self.phome.foutf)
+    self.phome.foutf.sf.pack(fill=tk.X)
+    self.foutput = tk.Entry(self.phome.foutf.sf,width=30,textvariable=self.outputfn)
+    self.foutput.pack(side=tk.LEFT,fill=tk.Y)
+    tk.Button(self.phome.foutf.sf,text=self.lang.gc("home.choose"),command=lambda:self.outputfn.set(
+      filedialog.askdirectory(
+        title=self.lang.gc("home.filedialog.title"),initialdir="C:\\"
+      )
+      )).pack(side=tk.LEFT,fill=tk.Y)
+    self.szframe = tk.LabelFrame(self.phome.foutf,text=self.lang.gc("home.fout.size"))
+    self.szframe.pack(fill=tk.X)
+    tk.Label(self.szframe,text="x").grid(row=1,column=1)
+    tk.Entry(self.szframe,textvariable=self.psize["x"]).grid(row=2,column=1)
+    tk.Label(self.szframe,text="y").grid(row=1,column=2)
+    tk.Entry(self.szframe,textvariable=self.psize["y"]).grid(row=2,column=2)
+    self.foutput.sh = tk.Label(self.phome.foutf)
+    self.foutput.sh.pack(fill=tk.X)
+  def process(self):
+    img = self.finput.img
+    with open(path.join(
+      self.config.gc("presets.home"),
+      self.config.gc("presets.default")
+    ),"r",encoding="utf-8") as f:
+      preset = f.read()
+    size = [self.psize["x"].get(),self.psize["y"].get()]
+    cont = processImg(img,size,Preset(preset).getColor(),self.config.gc("process.mode"))
+    with open(path.join(self.outputfn.get(),"output.nft"),"w",encoding="utf-8") as f:
+      f.write(cont)
   def btn_refresh(self,callpre=lambda:1):
     callpre()
     self.finput.img = Image.open(self.inputfn.get()).convert("RGB")
