@@ -139,6 +139,10 @@ class App():
         self.readonlyMultiText(self.infoshower,"{0}\n{1}".format(
           self.lang.gc("info.shower.vver")+VERSION["version"],
           self.lang.gc("info.shower.vdat")+VERSION["date"]
+        )),
+      self.lang.gc("info.shower.todo"):
+        self.readonlyMultiText(self.infoshower,"未来的新功能，有好的建议可以在Bilibili或本项目的Github上提出来\n项目Github地址：{0}\n{1}\n{2}".format(
+          "","-"*10,"\n".join(map(lambda s:" - {}".format(s),TD_LIST))
         ))
     }
     self.infoshower.refresh(infoma)

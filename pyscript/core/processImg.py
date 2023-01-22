@@ -30,7 +30,7 @@ def getSimilar(rgbarr,COLORS_m_,mode=MODE["AVERAGE"]):
   return retc
 
 def processImg(img,size,colors,mode):
-  print(img,size,colors,mode)
+  # print(img,size,colors,mode)
   arr = np.asarray(img.convert("RGB").resize(size)).tolist()
   towstr = ""
   for row in arr:
