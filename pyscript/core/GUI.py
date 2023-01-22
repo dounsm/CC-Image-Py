@@ -142,7 +142,7 @@ class App():
         )),
       self.lang.gc("info.shower.todo"):
         self.readonlyMultiText(self.infoshower,"未来的新功能，有好的建议可以在Bilibili或本项目的Github上提出来\n项目Github地址：{0}\n{1}\n{2}".format(
-          "","-"*10,"\n".join(map(lambda s:" - {}".format(s),TD_LIST))
+          "\nhttps://github.com/dounsm/CC-Image-Py","-"*10,"\n".join(map(lambda s:" - {}".format(s),TD_LIST))
         ))
     }
     self.infoshower.refresh(infoma)
