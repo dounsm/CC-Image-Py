@@ -1,7 +1,7 @@
 {
   "lang":{
     "home":"./lang",
-    "default":"zh.json"
+    "default":"en.json"
   },
   "presets":{
     "home":"./presets",

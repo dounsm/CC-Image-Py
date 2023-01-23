@@ -19,6 +19,26 @@
  - 建议将显示屏的缩放设为最小(`0.5`)，即执行`<device>.setTextScale(0.5)`
  - 程序中所需要的大小用`<device>.getSize()`获取，输出分别为`x`和`y`
 
+一个电脑中的示例`lua`绘图程序如下：
+
+**注意：需要把示例程序中对应显示屏方向替换成实际使用方向**
+
+```lua
+-- startup.lua
+-- 此程序开机自启动
+shell.run("monitor right draw");
+```
+
+```lua
+-- draw.lua
+term.clear(); --清屏
+term.setCursorPos(1,1); --设置光标位置
+local p = peripheral.wrap("right"); --包装显示屏外设
+p.setTextScale(0.5); --设置分辨率最高
+local img = paintutils.loadImage("output.nft"); --加载图片文件
+paintutils.drawImage(img,1,1); --绘制图片
+```
+
 本程序是支持多语言的，只要添加对应的语言文件`lang/xxx.json`，并在`settings.json`里设置
 
 本程序除了标准的`ComputerCraft`颜色预设，也能支持用户自定义的颜色预设

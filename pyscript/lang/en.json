@@ -1,4 +1,5 @@
 {
+  "description":"The Colors Transformer can transform common images into iamges using colors you chose. It's designed for Minecraft Computer Craft Mod and also can be used in other ways.",
   "GUI":{
     "window":{
       
@@ -7,7 +8,29 @@
       "title":"Colors Transformer"
     },
     "home":{
-      "title":"Homepage"
+      "title":"Homepage",
+      "descTitle":"Description",
+      "btnFrame":"Operation",
+      "btns":{
+        "run":"Start",
+        "exit":"Exit",
+        "refresh":"refresh"
+      },
+      "defaultFn":"Please choose ...",
+      "choose":"Choose",
+      "filedialog":{
+        "title":"Choose an image file",
+        
+        "photof":"Supported image files",
+        "allf":"All files"
+      },
+      "fin":{
+        "title":"File input"
+      },
+      "fout":{
+        "title":"File output",
+        "size":"Size of screen [Use getSize()]"
+      }
     },
     "info":{
       "title":"Information",
@@ -15,7 +38,8 @@
         "author":"Author Information",
         "version":"Version Information",
         "vver":"Version: ",
-        "vdat":"Update date: "
+        "vdat":"Update date: ",
+        "todo":"Features in future"
       }
     },
     "uplog":{

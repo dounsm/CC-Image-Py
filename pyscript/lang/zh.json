@@ -29,7 +29,7 @@
       },
       "fout":{
         "title":"文件输出",
-        "size":"屏幕大小 getSize()"
+        "size":"屏幕大小【使用getSize()】"
       }
     },
     "info":{
